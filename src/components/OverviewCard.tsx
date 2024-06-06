@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from "@/lib/storeHooks";
 import { addFavorite, removeFavorite } from "@/lib/features/favSlice";
 
 const OverviewCard = ({ details, favorites }: any) => {
-  console.log("🚀 ~ OverviewCard ~ details:", details);
   const [imgSrc, setImgSrc] = useState(details.imageUrl);
   const [isFav, setIsFav] = useState(
     favorites?.items?.some((item: any) => item.id === details.id)

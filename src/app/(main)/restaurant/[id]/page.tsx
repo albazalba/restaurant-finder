@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { createClient } from "../../../../utils/supabase/client";
+import { createClient } from "../../../../../utils/supabase/client";
 import Image from "next/image";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { usePathname } from "next/navigation";
