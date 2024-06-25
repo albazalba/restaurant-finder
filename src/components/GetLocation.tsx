@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { useLocationContext } from "../../utils/Context";
 
 const GetLocation = () => {
+  //@ts-ignore
     const {location, setLocation} = useLocationContext()
     console.log("🚀 ~ GetLocation ~ location:", location)
   const [userLocation, setUserLocation] = useState<{

@@ -33,7 +33,7 @@ const Favourites = () => {
       <p className="text-[24px] font-semibold mt-[20px]">Favourites</p>
 
       <div className="flex  w-[100%] js flex-wrap gap-5">
-        {favorites?.items?.map((item) => (
+        {favorites?.items?.map((item: any) => (
           <OverviewCard key={item.id} details={item} favorites={favorites} />
         ))}
       </div>

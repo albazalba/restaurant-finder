@@ -6,6 +6,7 @@ const Context = createContext(null);
 export function LocationProvider({ children }: any) {
   const [location, setLocation] = useState(null);
   return (
+    //@ts-ignore
     <Context.Provider value={{ location, setLocation }}>
       {children}
     </Context.Provider>
