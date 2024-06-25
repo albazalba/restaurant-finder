@@ -2,32 +2,29 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Define a type for the slice state
 export interface CounterState {
-  items: object[];
+  user: object | null;
 }
 
 // Define the initial state using that type
 const initialState: CounterState = {
-  items: [],
+  user: null,
 };
 
 export const counterSlice = createSlice({
-  name: "favourite",
+  name: "user",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    addFavorite: (state, action) => {
-      state.items.push(action.payload);
+    setUser: (state, action) => {
+      state.user = action.payload;
     },
-    removeFavorite: (state, action) => {
-      return {
-        //@ts-ignore
-        items: [...state?.items?.filter((item) => item.id !== action.payload)],
-      };
+    removeUser: (state) => {
+       state.user = null;
     },
   },
 });
 
-export const { addFavorite, removeFavorite } = counterSlice.actions;
+export const { setUser, removeUser } = counterSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: any) => state.counter.value;

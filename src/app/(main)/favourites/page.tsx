@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 
-const page = () => {
+const Favourites = () => {
   const favorites = useAppSelector((state) => state.favourites);
 
   return (
@@ -41,4 +41,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Favourites;

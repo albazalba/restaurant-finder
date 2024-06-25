@@ -4,6 +4,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import { LocationProvider } from "../../../utils/Context";
 import StoreProvider from "../StoreProvider";
+import UserSetter from "./components/UserSetter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,15 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      <StoreProvider>
-          <LocationProvider>
-            <Header />
-          </LocationProvider>
-        {children}
-        </StoreProvider>
-      </body>
-    </html>
+    <div>
+      <LocationProvider>
+        <UserSetter />
+        <Header />
+      </LocationProvider>
+      {children}
+    </div>
   );
 }

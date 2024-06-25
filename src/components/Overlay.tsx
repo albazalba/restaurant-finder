@@ -1,7 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import Bg from "../../public/restaurant-1.webp";
-import Image from "next/image";
+
 import { Input } from "./ui/input";
 import {
   Command,
@@ -13,9 +12,8 @@ import {
   CommandList,
 } from "./ui/command";
 import { createClient } from "../../utils/supabase/client";
-import { useAppSelector } from "@/lib/storeHooks";
 const Overlay = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const supabase = createClient();
   const [loading, setLoading] = useState(true);
   const [dataSet, setDataSet] = useState<any>([]);
@@ -36,7 +34,7 @@ const Overlay = () => {
         setDataSet(data);
       }
     } catch (error) {
-      alert("Error loading user data!");
+      console.log("🚀 ~ getData ~ error:", error)
     } finally {
       setLoading(false);
     }
@@ -60,7 +58,7 @@ const Overlay = () => {
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Suggestions">
-              {dataSet.map((data) => (
+              {dataSet.map((data: any) => (
                 <CommandItem key={data.id}>{data.name}</CommandItem>
               ))}
             </CommandGroup>

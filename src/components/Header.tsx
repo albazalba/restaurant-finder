@@ -7,20 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "../../utils/supabase/client";
 import { signout } from "@/lib/auth-actions";
+import { useAppDispatch, useAppSelector } from "@/lib/storeHooks";
+import { removeUser } from "@/lib/features/userSlice";
 
 const Header = () => {
-  const [user, setUser] = useState<any>(null);
-  const supabase = createClient();
+  const currentUser = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUser(user);
-    };
-    fetchUser();
-  }, []);
   return (
     <div className="bg-white text-black flex p-3 justify-between items-center">
       <div className="h-[50px] w-[200px] relative">
@@ -39,11 +32,11 @@ const Header = () => {
         >
           Favourites
         </Link>
-        {user ? (
+        {currentUser?.user ? (
           <Button
             onClick={async () => {
               await signout();
-              setUser(null);
+              dispatch(removeUser());
             }}
           >
             Logout

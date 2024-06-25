@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import favSlice from './features/favSlice';
+import userSlice from './features/userSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       favourites: favSlice,
+      user: userSlice
     },
   });
 };
